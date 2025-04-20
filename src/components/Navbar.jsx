@@ -269,6 +269,11 @@ const Navbar = () => {
                         My Profile
                       </li>
                     </Link>
+                    {isAuth?.user?.role === "admin" && (
+                      <li className="px-4 py-2 hover:bg-secondary cursor-pointer">
+                        <Link to="/admin/dashboard">Dashboard </Link>
+                      </li>
+                    )}
                     <li className="hover:font-semibold transition-all ease-linear duration-150 hover:bg-gray-700 cursor-pointer">
                       <button
                         onClick={handleDeleteAccount}
