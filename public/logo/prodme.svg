@@ -1,0 +1,33 @@
+<svg
+              width="40"
+              height="35"
+              viewBox="0 0 200 200"
+              fill="white"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M50 130C50 85 85 50 125 50C165 50 200 85 200 130V150"
+                stroke="white"
+                strokeWidth="20"
+                fill="black"
+                strokeLinecap="round"
+              />
+
+              <rect
+                x="30"
+                y="130"
+                width="40"
+                height="60"
+                rx="10"
+                fill="white"
+              />
+
+              <rect
+                x="130"
+                y="130"
+                width="40"
+                height="60"
+                rx="10"
+                fill="white"
+              />
+            </svg>

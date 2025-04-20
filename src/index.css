@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #020617;
+  --color-secondary: #52525c;
+  --color-base: #f4f4f5;
+  --color-elevated: #000000;
+  --color-strong: #e4e4e7;
+  --color-white: #ffffff;
+  --color-snow: #fffafa;
+  --color-floralWhite: #fffaf0;
+  --color-bone: #f9f6ee;
+  --color-pearl: #e2dfd2;
+}
+
+html,
+body {
+  background: var(--color-primary);
+  color: var(--color-base);
+}
