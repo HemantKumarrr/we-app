@@ -7,10 +7,12 @@ import { motion } from "framer-motion";
 import { allPostsData } from "../store/features/post.slice";
 import toast from "react-hot-toast";
 import { api } from "../api/api";
+import PageLoader from "../components/PageLoader";
 
 const Home = () => {
   const dispatch = useDispatch();
   const [searchText, setSearchText] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const postData = useSelector((state) => state.posts.posts);
 
@@ -21,9 +23,12 @@ const Home = () => {
 
   const fetchAllPosts = async () => {
     try {
+      setIsLoading(true);
       const response = await api.get("/get-posts");
       dispatch(allPostsData(response.data.data));
+      setIsLoading(false);
     } catch (err) {
+      setIsLoading(false);
       console.log(err);
       toast.error("Something went wrong");
     }
@@ -121,20 +126,26 @@ const Home = () => {
         </motion.h1>
       </div>
       <ul className="postLists rounded-t-2xl px-0 md:px-10 lg:px-20 py-4">
-        {AllPosts?.map((item) => {
-          return (
-            <li key={item._id}>
-              <PostCard
-                user={item.user}
-                title={item.title}
-                detail={item.detail}
-                createdAt={item?.createdAt}
-                postId={item._id}
-                likes={item.likes}
-              />
-            </li>
-          );
-        })}
+        {isLoading ? (
+          <div className="mx-auto w-full absolute left-0 bottom-35">
+            <PageLoader />
+          </div>
+        ) : (
+          AllPosts?.map((item) => {
+            return (
+              <li key={item._id}>
+                <PostCard
+                  user={item.user}
+                  title={item.title}
+                  detail={item.detail}
+                  createdAt={item?.createdAt}
+                  postId={item._id}
+                  likes={item.likes}
+                />
+              </li>
+            );
+          })
+        )}
       </ul>
     </div>
   );

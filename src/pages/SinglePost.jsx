@@ -118,8 +118,12 @@ const SinglePost = () => {
         onClose={() => setModalOpen(false)}
         title=""
       >
-        <div className="w-full">
-          <img src={postData?.imageUrl} alt="post-image" />
+        <div className="w-full ">
+          <img
+            src={postData?.imageUrl}
+            className="max-h-[28rem] mx-auto"
+            alt="post-image"
+          />
         </div>
       </ConfirmModal>
       <div className="single-post flex flex-col items-start justify-center gap-2">
