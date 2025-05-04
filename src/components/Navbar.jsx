@@ -201,7 +201,7 @@ const Navbar = () => {
               </ul>
               <div className="auth-btn text-sm flex justify-center items-center gap-2 font-semibold">
                 <Link
-                  className="px-2 bg-zinc-900 hover:text-black border border-gray-500 rounded-sm py-[0.20rem] hover:bg-white"
+                  className="px-2 text-black border border-gray-500 rounded-sm py-[0.20rem] bg-white"
                   to="/login"
                 >
                   Login

@@ -19,6 +19,7 @@ import { setSavedPosts } from "../store/features/post.slice";
 import AudioUI from "../components/AudioUI";
 import { canDeletePost } from "../utils/permissions";
 import ConfirmModal from "../components/modals/ConfirmModal";
+import ShareDropdown from "../components/ShareDropdown";
 
 const SinglePost = () => {
   const { postId } = useParams();
@@ -39,7 +40,6 @@ const SinglePost = () => {
         { userId, postId },
         { withCredentials: true }
       );
-      console.log(response.data);
       toast.success(response.data.message);
       dispatch(setSavedPosts(postId));
     } catch (error) {
@@ -188,6 +188,7 @@ const SinglePost = () => {
                   <Trash2 size={18} />
                 </button>
               )}
+              <ShareDropdown postUrl={window.location.href} />
               <button
                 onClick={savePost}
                 className="cursor-pointer hover:bg-zinc-800 p-1 rounded-full active:scale-[0.90]"
