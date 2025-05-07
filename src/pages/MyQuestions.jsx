@@ -29,6 +29,7 @@ const MyQuestions = () => {
         }
         return toast.error(response.data.error);
       }
+      console.log(response);
       setMyPosts(response.data);
       setIsLoading(false);
     } catch (error) {

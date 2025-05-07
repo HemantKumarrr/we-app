@@ -48,13 +48,13 @@ const BookMarks = () => {
               {savedPosts?.map((item) => {
                 return (
                   <PostCard
-                    key={item.post._id}
-                    user={item.post.user}
-                    title={item.post.title}
-                    detail={item.post.detail}
-                    createdAt={item.post.createdAt}
-                    postId={item.post._id}
-                    likes={item.post.likes}
+                    key={item.post?._id}
+                    user={item.post?.user}
+                    title={item.post?.title}
+                    detail={item.post?.detail}
+                    createdAt={item.post?.createdAt}
+                    postId={item.post?._id}
+                    likes={item.post?.likes}
                   />
                 );
               })}

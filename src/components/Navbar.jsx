@@ -68,20 +68,6 @@ const Navbar = () => {
 
   return (
     <div>
-      <ConfirmModal
-        isOpen={isModalOpen}
-        onClose={() => setModalOpen(false)}
-        title="Confirm to Delete account"
-      >
-        <div className="">
-          <button
-            onClick={() => handleDeleteAccount()}
-            className="px-4 py-1 cursor-pointer text-sm bg-red-600 text-white"
-          >
-            Delete account
-          </button>
-        </div>
-      </ConfirmModal>
       <div className="nav-container bg-primary z-50 fixed w-full h-14 border-b border-gray-800 flex items-center justify-between px-2 md:px-30 lg:px-40">
         <div className="logo">
           <Link className="font-bold gap-1 flex md:text-xl px-2 py-1" to="/">
@@ -163,14 +149,13 @@ const Navbar = () => {
                             <Link to="/admin/dashboard">Dashboard </Link>
                           </li>
                         )}
-                        <li className="hover:font-semibold transition-all ease-linear duration-150 hover:bg-secondary cursor-pointer">
-                          <button
-                            onClick={() => setModalOpen((prev) => !prev)}
-                            className="px-4 py-2 cursor-pointer"
-                          >
-                            Account delete
-                          </button>
-                        </li>
+                        {/* <button
+                          onClick={() => setModalOpen((prev) => !prev)}
+                          className="px-4 py-2 cursor-pointer"
+                        >
+                          Account delete
+                        </button> */}
+
                         <li className="transition-all ease-linear duration-150 hover:bg-red-500">
                           <button
                             className="px-4 py-2 cursor-pointer w-full text-start"
@@ -270,18 +255,14 @@ const Navbar = () => {
                       </li>
                     </Link>
                     {isAuth?.user?.role === "admin" && (
-                      <li className="px-4 py-2 hover:bg-secondary cursor-pointer">
+                      <li
+                        onClick={() => setProfileToggle(false)}
+                        className="px-4 py-2 hover:bg-secondary cursor-pointer"
+                      >
                         <Link to="/admin/dashboard">Dashboard </Link>
                       </li>
                     )}
-                    <li className="hover:font-semibold transition-all ease-linear duration-150 hover:bg-gray-700 cursor-pointer">
-                      <button
-                        onClick={handleDeleteAccount}
-                        className="px-4 py-2 cursor-pointer"
-                      >
-                        Account delete
-                      </button>
-                    </li>
+
                     <li className="cursor-pointer hover:text-white transition-all ease-linear duration-150 hover:bg-red-600">
                       <button
                         onClick={handleLogout}

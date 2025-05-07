@@ -118,7 +118,7 @@ const SinglePost = () => {
         onClose={() => setModalOpen(false)}
         title=""
       >
-        <div className="w-full ">
+        <div>
           <img
             src={postData?.imageUrl}
             className="max-h-[28rem] mx-auto"

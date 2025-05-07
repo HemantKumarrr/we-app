@@ -7,14 +7,19 @@ import { TiTick } from "react-icons/ti";
 import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { setCredentials } from "../store/features/auth.slice";
+import ConfirmModal from "../components/modals/ConfirmModal";
+import { MdDeleteForever } from "react-icons/md";
 
 const MyProfile = () => {
+  const isAuth = useSelector((state) => state.auth.user);
   const dispatch = useDispatch();
   const [countries, setCountries] = useState([]);
   const [loading, setLoading] = useState(true);
   const currentUser = useSelector((state) => state.auth.user.user);
   const [editUsername, setEditUsername] = useState(false);
   const [editAge, setEditAge] = useState(false);
+  const [isModalOpen, setModalOpen] = useState(false);
+
   const [updatedUser, setUpdatedUser] = useState({
     username: currentUser.username,
     email: currentUser.email,
@@ -59,6 +64,21 @@ const MyProfile = () => {
     }
   };
 
+  const handleDeleteAccount = async () => {
+    try {
+      const response = await api.delete(`/account-delete/${isAuth.user._id}`, {
+        withCredentials: true,
+      });
+      toast.success("User account deleted");
+      setProfileToggle(false);
+      setModalOpen(false);
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+      toast.error(error.message);
+    }
+  };
+
   useEffect(() => {
     window.scroll(0, 0);
     fetchCountries();
@@ -66,6 +86,20 @@ const MyProfile = () => {
 
   return (
     <div className="pt-14 md:px-8 lg:px-18">
+      <ConfirmModal
+        isOpen={isModalOpen}
+        onClose={() => setModalOpen(false)}
+        title="Confirm to Delete account"
+      >
+        <div className="">
+          <button
+            onClick={() => handleDeleteAccount()}
+            className="px-4 py-1 cursor-pointer text-sm bg-red-600 text-white"
+          >
+            Delete account
+          </button>
+        </div>
+      </ConfirmModal>
       <div className="card border flex md:flex-row flex-col items-center justify-center p-2 md:p-4 rounded-sm border-gray-700">
         <div className="flex w-full flex-col justify-center items-center gap-4 py-4">
           <img
@@ -188,7 +222,7 @@ const MyProfile = () => {
               </div>
             </div>
           </div>
-          <div className="w-full">
+          <div className="w-full flex items-center justify-between">
             {isChange && (
               <button
                 onClick={handleUpdateInfo}
@@ -197,6 +231,13 @@ const MyProfile = () => {
                 Update
               </button>
             )}
+            <button
+              onClick={() => setModalOpen((prev) => !prev)}
+              className="px-2 py-1 text-sm cursor-pointer bg-gray-800 flex items-center gap-2"
+            >
+              Delete Account
+              <MdDeleteForever size={16} />
+            </button>
           </div>
         </div>
       </div>
