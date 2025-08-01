@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { api } from "../../api/api";
+import { Helmet } from "react-helmet";
 
 const Signup = () => {
   const [userData, setUserData] = useState({
@@ -42,6 +43,12 @@ const Signup = () => {
 
   return (
     <div className="w-full pt-20 ">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Signup - We.</title>
+        <link rel={`https://mysite.com/signup`} />
+        <meta name="description" content="create account on We platform" />
+      </Helmet>
       <div className="card flex flex-col items-center justify-center h-full">
         <h1 className="md:text-4xl text-2xl font-bold uppercase text-gray-400">
           Signup

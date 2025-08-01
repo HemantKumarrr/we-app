@@ -3,6 +3,7 @@ import { api } from "../api/api";
 import { useSelector } from "react-redux";
 import PostCard from "../components/PostCard";
 import PostCardLoader from "../components/PostCardLoader";
+import { Helmet } from "react-helmet";
 
 const BookMarks = () => {
   const currentUser = useSelector((state) => state.auth.user.user);
@@ -29,6 +30,12 @@ const BookMarks = () => {
   }, []);
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Bookmarks - We.</title>
+        <link rel={`https://mysite.com/bookmarks`} />
+        <meta name="description" content="all your bookmarks" />
+      </Helmet>
       <div className="pt-10">
         <div className=" flex items-center">
           <h1 className="text-xl font-semibold px-4 rounded-full py-1 text-white border border-gray-700">

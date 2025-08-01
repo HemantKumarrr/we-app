@@ -44,7 +44,11 @@ const Home = () => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>We. - A Community Platform for Musicians</title>
-        <link rel="canonical" href="http://mysite.com/example" />
+        <link rel="canonical" href="http://mysite.com/" />
+        <meta
+          name="description"
+          content="Platform for music artists including producers, lyricist, composers and instrumentalist to collborate and support each other"
+        />
       </Helmet>
       <div className="pt-[12vh] md:pt-[16vh] relative ">
         <motion.h1

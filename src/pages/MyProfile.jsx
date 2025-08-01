@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { setCredentials } from "../store/features/auth.slice";
 import ConfirmModal from "../components/modals/ConfirmModal";
 import { MdDeleteForever } from "react-icons/md";
+import { Helmet } from "react-helmet";
 
 const MyProfile = () => {
   const isAuth = useSelector((state) => state.auth.user);
@@ -86,6 +87,12 @@ const MyProfile = () => {
 
   return (
     <div className="pt-14 md:px-8 lg:px-18">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>My Profile - We.</title>
+        <link rel={`https://mysite.com/my-profile`} />
+        <meta name="description" content="manage your profile on we platform" />
+      </Helmet>
       <ConfirmModal
         isOpen={isModalOpen}
         onClose={() => setModalOpen(false)}

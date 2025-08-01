@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { MdDeleteForever } from "react-icons/md";
 import { canDeleteUser } from "../utils/permissions";
 import ConfirmModal from "../components/modals/ConfirmModal";
+import { Helmet } from "react-helmet";
 
 const DashBoard = () => {
   const currentUser = useSelector((state) => state.auth.user.user);
@@ -57,6 +58,12 @@ const DashBoard = () => {
   return (
     <>
       <div className="pt-10">
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>Dashboard - We.</title>
+          <link rel="canonical" href="http://mysite.com/dashboard" />
+          <meta name="description" content="we-dashboard for managing users" />
+        </Helmet>
         <ConfirmModal
           isOpen={isModalOpen}
           onClose={() => setModalOpen(false)}

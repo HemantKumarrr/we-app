@@ -114,8 +114,12 @@ const SinglePost = () => {
     <div className="py-4">
       <Helmet>
         <meta charSet="utf-8" />
-        <title>We - Post {postId}</title>
+        <title>Post {postId} - We.</title>
         <link rel={`https://mysite.com/posts/we-post`} />
+        <meta
+          name="description"
+          content={`all content of single post ${postId}`}
+        />
       </Helmet>
       {/* <ConfirmModal /> */}
       <ConfirmModal

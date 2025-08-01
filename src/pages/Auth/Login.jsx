@@ -7,6 +7,7 @@ import { setCredentials } from "../../store/features/auth.slice";
 import { useGoogleLogin } from "@react-oauth/google";
 import { api, googleAuth } from "../../api/api";
 import GoogleSVG from "./GoogleSVG";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -68,6 +69,15 @@ const Login = () => {
 
   return (
     <div className="w-full pt-20">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Login - We.</title>
+        <link rel={`https://mysite.com/login`} />
+        <meta
+          name="description"
+          content="login to your account on We platform"
+        />
+      </Helmet>
       <div className="card flex flex-col items-center justify-center h-full">
         <h1 className="md:text-4xl text-2xl font-bold uppercase text-gray-400">
           welcome Back !

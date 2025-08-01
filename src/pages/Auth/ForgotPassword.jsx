@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { api } from "../../api/api";
 import { TbLockPassword } from "react-icons/tb";
+import { Helmet } from "react-helmet";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -20,6 +21,15 @@ const ForgotPassword = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Forgot Password - We.</title>
+        <link rel={`https://mysite.com/forgot-password`} />
+        <meta
+          name="description"
+          content="forgot password enter your email to change password and get back to your account"
+        />
+      </Helmet>
       <div className="px-20 pt-18">
         <div className="card">
           <h1 className="text-2xl font-semibold text-gray-300 flex items-center gap-2">

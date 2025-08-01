@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { api } from "../api/api";
 import AttachFile from "../components/AttachFile";
 import uploadToCloudinary from "../utils/uploadToCloudinary";
+import { Helmet } from "react-helmet";
 
 const Create = () => {
   const [progress, setProgress] = useState(0);
@@ -69,6 +70,15 @@ const Create = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Create a post - We.</title>
+        <link rel={`https://mysite.com/create-post`} />
+        <meta
+          name="description"
+          content="create a post and share it to we platform"
+        />
+      </Helmet>
       <div className="container flex flex-col items-center pt-8 pb-12">
         <div className="flex items-center md:flex-row flex-col">
           <h1 className="font-semibold text-2xl md:text-3xl md:py-2 whitespace-nowrap">

@@ -7,6 +7,7 @@ import PostCardLoader from "../components/PostCardLoader";
 import { SquarePenIcon } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { logOut } from "../store/features/auth.slice";
+import { Helmet } from "react-helmet";
 
 const MyQuestions = () => {
   const { uid } = useParams();
@@ -46,6 +47,15 @@ const MyQuestions = () => {
 
   return (
     <div className="pt-10">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>My Questions - We.</title>
+        <link rel={`https://mysite.com/my-questions`} />
+        <meta
+          name="description"
+          content="list of all your questions on we platform"
+        />
+      </Helmet>
       <div className=" flex items-center">
         <h1 className="text-xl font-semibold px-4 rounded-full border border-gray-700 py-1 text-white">
           My Posts
