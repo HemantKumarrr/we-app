@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Telescope, SearchIcon } from "lucide-react";
-import { useState, lazy, Suspense, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { RiSearchLine } from "react-icons/ri";
 import PostCard from "../components/PostCard";
 import { motion } from "framer-motion";
@@ -8,6 +8,7 @@ import { allPostsData } from "../store/features/post.slice";
 import toast from "react-hot-toast";
 import { api } from "../api/api";
 import PageLoader from "../components/PageLoader";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,11 @@ const Home = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>We. - A Community Platform for Musicians</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="pt-[12vh] md:pt-[16vh] relative ">
         <motion.h1
           initial={{ x: 18, opacity: 0 }}
@@ -63,33 +69,6 @@ const Home = () => {
             Composers
           </li>
         </ul>
-        {/* <div className="px-8 py-3 flex items-center justify-center gap-5">
-          <img
-            src="https://www.image-line.com/static/assets/nav-logo-fruit.41db863.png"
-            alt="fl-stuio-logo"
-            className="w-5"
-          />
-          <img
-            src="https://cdn-resources.ableton.com/80bA26cPQ1hEJDFjpUKntxfqdmG3ZykO/static/images/ableton-hallmark.ef5355379032.svg"
-            alt="ableton-logo"
-            className="w-9"
-          />
-          <img
-            src="https://upload.wikimedia.org/wikipedia/en/c/c7/Logic_Pro_icon.png"
-            alt="ableton-logo"
-            className="w-9"
-          />
-          <img
-            src="https://upload.wikimedia.org/wikipedia/en/f/f7/GarageBand_App.png"
-            alt="ableton-logo"
-            className="w-9"
-          />
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/1/1d/Cubase_logo.svg"
-            alt="ableton-logo"
-            className="w-16"
-          />
-        </div> */}
       </div>
       <motion.div
         initial={{ y: 28, opacity: 0 }}

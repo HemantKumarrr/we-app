@@ -172,6 +172,7 @@ const DashBoard = () => {
                                   });
                                 }}
                                 className="hover:text-red-600 cursor-pointer"
+                                aria-label="delete user"
                               >
                                 <MdDeleteForever size={18} />
                               </button>

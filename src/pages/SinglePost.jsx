@@ -20,6 +20,7 @@ import AudioUI from "../components/AudioUI";
 import { canDeletePost } from "../utils/permissions";
 import ConfirmModal from "../components/modals/ConfirmModal";
 import ShareDropdown from "../components/ShareDropdown";
+import { Helmet } from "react-helmet";
 
 const SinglePost = () => {
   const { postId } = useParams();
@@ -46,7 +47,6 @@ const SinglePost = () => {
       console.log(error);
     }
   };
-
   const postSavedBoo = isPostSaved.includes(postId);
 
   const handleDeletePost = async () => {
@@ -112,6 +112,11 @@ const SinglePost = () => {
 
   return (
     <div className="py-4">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>We - Post {postId}</title>
+        <link rel={`https://mysite.com/posts/we-post`} />
+      </Helmet>
       {/* <ConfirmModal /> */}
       <ConfirmModal
         isOpen={isModalOpen}
@@ -128,7 +133,10 @@ const SinglePost = () => {
       </ConfirmModal>
       <div className="single-post flex flex-col items-start justify-center gap-2">
         <div className="hover:bg-gray-900 rounded-full cursor-pointer active:bg-zinc-800">
-          <ArrowLeft onClick={() => window.history.back()} />
+          <ArrowLeft
+            aria-label="go back"
+            onClick={() => window.history.back()}
+          />
         </div>
         <div className="ask border w-full border-gray-400 rounded-sm px-2 md:px-4 py-4">
           <div className="">
@@ -166,6 +174,7 @@ const SinglePost = () => {
               <button
                 onClick={handleLike}
                 className="flex items-center gap-1 cursor-pointer hover:bg-zinc-800 p-1 rounded-full active:scale-[0.90]"
+                aria-label="like post"
               >
                 <PostLike />
                 <p>{postData?.likes.length || 0}</p>
@@ -184,6 +193,7 @@ const SinglePost = () => {
                 <button
                   onClick={handleDeletePost}
                   className="cursor-pointer hover:bg-zinc-800 p-1 rounded-full active:scale-[0.90]"
+                  aria-label="delete post"
                 >
                   <Trash2 size={18} />
                 </button>
@@ -192,6 +202,7 @@ const SinglePost = () => {
               <button
                 onClick={savePost}
                 className="cursor-pointer hover:bg-zinc-800 p-1 rounded-full active:scale-[0.90]"
+                aria-label="save post"
               >
                 <Bookmark size={18} fill={postSavedBoo ? "white" : "black"} />
               </button>

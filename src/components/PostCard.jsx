@@ -57,7 +57,7 @@ const PostCard = ({ user, title, detail, createdAt, postId, likes }) => {
 
   return (
     <div className="card hover:scale-[1.015] transition-all duration-100 ease-linear px-8 border border-gray-700 hover:border hover:border-r-green-500 hover:border-b-orange-500 hover:border-t-blue-600 hover:border-l-blue-400 flex justify-between hover:shadow-md mb-4 py-4 rounded-sm">
-      <Link to={`/post/${postId}`}>
+      <Link to={`/post/${postId}`} className="w-full mr-4">
         <div className="flex w-full items-end">
           <h1 className="text-xl font-semibold w-full">
             # {title || <IsLoading />}
@@ -83,18 +83,21 @@ const PostCard = ({ user, title, detail, createdAt, postId, likes }) => {
             )}
             <span className="text-xs">{likes?.length}</span>
           </p>
-          <p className="text-xs text-gray-600">Posted {timeAgo(createdAt)}</p>
+          <p className="text-xs text-gray-400">Posted {timeAgo(createdAt)}</p>
         </div>
       </Link>
-      <button
-        onClick={savePost}
-        className="cursor-pointer flex items-end justify-end"
-      >
-        <Bookmark
-          size={18}
-          fill={isPostSaved.includes(postId) ? "white" : "black"}
-        />
-      </button>
+      <section className="flex items-end justify-center">
+        <button
+          onClick={savePost}
+          className="cursor-pointer"
+          aria-label="save post"
+        >
+          <Bookmark
+            size={20}
+            fill={isPostSaved.includes(postId) ? "white" : "black"}
+          />
+        </button>
+      </section>
     </div>
   );
 };

@@ -1,11 +1,6 @@
 import "./App.css";
-import { lazy, Suspense, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from "react-router-dom";
+import { lazy, Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Layout from "./layout/Layout";
 const Login = lazy(() => import("./pages/Auth/Login"));
@@ -15,13 +10,8 @@ const ResetPassword = lazy(() => import("./pages/Auth/ResetPassword"));
 import Private from "./private/Private";
 const Create = lazy(() => import("./pages/Create"));
 const Home = lazy(() => import("./pages/Home"));
-const About = lazy(() => import("./pages/About"));
-const Contact = lazy(() => import("./pages/Contact"));
 const SinglePost = lazy(() => import("./pages/SinglePost"));
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { useDispatch, useSelector } from "react-redux";
-import toast from "react-hot-toast";
-import { api } from "./api/api";
 const MyQuestions = lazy(() => import("./pages/MyQuestions"));
 const MyProfile = lazy(() => import("./pages/MyProfile"));
 const BookMarks = lazy(() => import("./pages/BookMarks"));
@@ -92,16 +82,6 @@ function App() {
                 }
               />
             </Route>
-
-            <Route
-              path="/about"
-              element={
-                <Suspense fallback={<PageLoader />}>
-                  <About />
-                </Suspense>
-              }
-            />
-
             <Route
               path="/post/:postId"
               element={
